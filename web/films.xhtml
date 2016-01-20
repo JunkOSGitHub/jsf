@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h1><h:outputText value="Liste des films du genre #{cineBean.genre.name}"/></h1>
+    <h:form id="form">
+        <h:dataTable value="#{cineBean.films}" var="film"
+                     styleClass="filmTable"
+                     headerClass="filmTableHeader"
+                     rowClasses="filmTableOddRow,filmTableEvenRow">
+            <h:column>
+                <f:facet name="header">Id</f:facet>
+                #{film.id}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Name</f:facet>
+                #{film.name}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Genre</f:facet>
+                #{film.genre}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Show</f:facet>
+                <h:commandButton value="See" action="#{cineBean.doView(film)}"/>
+            </h:column>
+        </h:dataTable>
+
+    </h:form>
+    <h:form id="backHome">
+        <h:commandButton value="Retour" action="#{cineBean.doBackHome}"/>
+    </h:form>
+</html>

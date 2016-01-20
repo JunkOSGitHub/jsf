@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Register</title>
+</h:head>
+<h:body>
+    <f:view>
+        <h:form id="form">
+            <h:panelGrid columns="2" border="0" cellpadding="5" cellspacing="1">
+                <f:facet name="header">
+                    <h:outputText value="Register"/>
+                </f:facet>
+                <h:outputLabel for="emailInput" value="Email"/>
+                <h:inputText id="emailInput" value="#{techSupportBean.customer.email}"
+                             required="true" requiredMessage="Email is required"
+                             size="20" maxlength="30"
+                />
+                <h:outputLabel for="firstnameInput" value="Firstname"/>
+                <h:inputText id="firstnameInput" value="#{techSupportBean.customer.firstname}"
+                             required="true" requiredMessage="Firstname is required"
+                             size="20" maxlength="30"
+                />
+                <h:outputLabel for="lastnameInput" value="Lastname"/>
+                <h:inputText id="lastnameInput" value="#{techSupportBean.customer.lastname}"
+                             required="true" requiredMessage="Lastname is required"
+                             size="20" maxlength="30"
+                />
+
+                <h:commandButton value="Login" action="#{techSupportBean.doRegister}"/>
+
+            </h:panelGrid>
+        </h:form>
+    </f:view>
+</h:body>
+</html>
