@@ -1,32 +1,28 @@
 package com.junk.os.cine.controllers;
 
-import com.junk.os.cine.crud.CRUDManager;
+import com.junk.os.cine.crud.Facade;
 import com.junk.os.cine.models.Film;
 import com.junk.os.cine.models.Genre;
 
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 @ManagedBean(name ="cineBean")
 @SessionScoped
 public class CineBean {
+    @EJB
+    private Facade facade;
     List<Genre> genres;
     List<Film> films;
     Film film;
     Genre genre;
 
     public String doSearch(){
-        try {
-            films = CRUDManager.getInstance().getFilms(genre.getName());
-            return "films";
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
+        films = facade.getFilms(genre.getName());
+        return "films";
     }
 
     public String doView(Film film){
@@ -43,17 +39,21 @@ public class CineBean {
     }
 
     public CineBean(){
-        try {
-            genres = CRUDManager.getInstance().getGenres();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        genres = new ArrayList<Genre>();
         films = new ArrayList<Film>();
         film = new Film();
         genre = new Genre();
     }
 
     public List<Genre> getGenres() {
+        if(genres.isEmpty()) {
+            System.out.println("Genres is null");
+            genres = facade.getGenres();
+            System.out.println("Size : "+genres.size());
+            return genres;
+        }
+        System.out.println("Genres is not null");
+        System.out.println("Size : "+genres.size());
         return genres;
     }
 

@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-ear" name="jsf:ear exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/jsf_ear_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="jsf/javaeeApplication/javaEEApplication" />
+      <element id="directory" name="web.war">
+        <element id="artifact" artifact-name="jsf:war exploded" />
+      </element>
+      <element id="directory" name="lib">
+        <element id="library" level="project" name="eclipselink-2.5.0" />
+        <element id="library" level="project" name="JPA 2.0-2.0" />
+        <element id="library" level="project" name="Mojarra-2.2.1" />
+      </element>
+    </root>
+  </artifact>
+</component>
